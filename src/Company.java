@@ -1,71 +1,65 @@
 
 public class Company {
-	static String name;
+	String name;
 
 	Company (String name) {
-		System.out.println("UNIMPLEMENTED");
+		this.name = name;
 	}
 
-	public static void main(String[] args) {
-
+	public String getName () {
+		return name;
 	}
 
-	public static String getName () {
-		System.out.println("UNIMPLEMENTED");
-		return null;
-	}
-
-	public static Worker[] getAvailableWorkers () {
+	public Worker[] getAvailableWorkers () {
 		System.out.println("UNIMPLEMENTED");
 		return null;
 	}
 
-	public static Worker[] getAssignedWorkers () {
+	public Worker[] getAssignedWorkers () {
 		System.out.println("UNIMPLEMENTED");
 		return null;
 	}
 
-	public static Worker[] getUnassignedWorkers () {
+	public Worker[] getUnassignedWorkers () {
 		System.out.println("UNIMPLEMENTED");
 		return null;
 	}
 
-	public static boolean equals () {
+	public boolean equals () {
 		System.out.println("UNIMPLEMENTED");
 		return false;
 	}
 
 	@Override
 	public String toString () {
-		System.out.println("UNIMPLEMENTED");
-		return null;
+		return "UNIMPLEMENTED";
 	}
 
-	public static void addToAvailableWorkerPool (Worker w) {
-		System.out.println("UNIMPLEMENTED");
-	}
-
-	public static void assign (Worker w, Project p) {
+	public void addToAvailableWorkerPool (Worker w) {
 		System.out.println("UNIMPLEMENTED");
 	}
 
-	public static void unassign (Worker w, Project p) {
+	public void assign (Worker w, Project p) {
 		System.out.println("UNIMPLEMENTED");
 	}
 
-	public static void unnasign (Worker w) {
+	public void unassign (Worker w, Project p) {
 		System.out.println("UNIMPLEMENTED");
 	}
 
-	public static void start (Project p) {
+	public void unnasign (Worker w) {
 		System.out.println("UNIMPLEMENTED");
 	}
 
-	public static void finish (Project p) {
+	public void start (Project p) {
 		System.out.println("UNIMPLEMENTED");
 	}
 
-	public static void createProject (String n, Qualification[] qs, ProjectSize size) {
+	public void finish (Project p) {
+		System.out.println("UNIMPLEMENTED");
+	}
+
+	public void createProject (String n, Qualification[] qs, ProjectSize size) {
 		System.out.println("UNIMPLEMENTED");
 	}
 }

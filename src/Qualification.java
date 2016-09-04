@@ -3,11 +3,7 @@ public class Qualification {
 	String description;
 
 	Qualification (String description) {
-		System.out.println("UNIMPLEMENTED");
-	}
-
-	public static void main(String[] args) {
-
+		this.description = description;
 	}
 
 	public static boolean equals () {
@@ -16,7 +12,6 @@ public class Qualification {
 	}
 
 	public String toString () {
-		System.out.println("UNIMPLEMENTED");
-		return null;
+		return "UNIMPLEMENTED";
 	}
 }
