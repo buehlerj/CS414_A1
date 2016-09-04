@@ -5,40 +5,34 @@ public class Project {
 	ProjectStatus status;
 
 	Project (String name, ProjectSize size, ProjectStatus status) {
-		System.out.println("UNIMPLEMENTED");
+		this.name = name;
+		this.size = size;
+		this.status = status;
 	}
 
-	public static void main(String[] args) {
-
+	public String getName () {
+		return name;
 	}
 
-	public static String getName () {
-		System.out.println("UNIMPLEMENTED");
-		return null;
+	public ProjectSize getSize () {
+		return size;
 	}
 
-	public static ProjectSize getSize () {
-		System.out.println("UNIMPLEMENTED");
-		return null;
+	public ProjectStatus getStatus () {
+		return status;
 	}
 
-	public static ProjectStatus getStatus () {
-		System.out.println("UNIMPLEMENTED");
-		return null;
-	}
-
-	public static void setStatus (ProjectStatus status) {
-		System.out.println("UNIMPLEMENTED");
+	public void setStatus (ProjectStatus status) {
+		this.status = status;
 	}
 
 	public static boolean equals () {
 		System.out.println("UNIMPLEMENTED");
-		return true;
+		return false;
 	}
 
 	public String toString () {
-		System.out.println("UNIMPLEMENTED");
-		return null;
+		return "UNIMPLEMENTED";
 	}
 
 	public static Qualification[] missingQualifications () {

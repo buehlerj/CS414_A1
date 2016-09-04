@@ -3,16 +3,11 @@ public class Worker {
 	String name;
 
 	Worker (String name, Qualification[] qs) {
-		System.out.println("UNIMPLEMENTED");
+		this.name = name;
 	}
 
-	public static void main(String[] args) {
-
-	}
-
-	public static String getName () {
-		System.out.println("UNIMPLEMENTED");
-		return null;
+	public String getName () {
+		return name;
 	}
 
 	public static Double getSalary () {
@@ -35,17 +30,16 @@ public class Worker {
 
 	public static boolean equals () {
 		System.out.println("UNIMPLEMENTED");
-		return true;
+		return false;
 	}
 
 	public String toString () {
-		System.out.println("UNIMPLEMENTED");
-		return null;
+		return "UNIMPLEMENTED";
 	}
 
 	public static boolean willOverload (Project p) {
 		System.out.println("UNIMPLEMENTED");
-		return true;
+		return false;
 	}
 
 }
