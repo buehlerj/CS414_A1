@@ -1,6 +1,10 @@
 
 public class Worker {
 	String name;
+	Company companyAvailableTo;
+	Company companyAssignedTo;
+	Project[] projectAssignedTo;
+	Qualification[] isQualifiedFor;
 
 	Worker (String name, Qualification[] qs) {
 		this.name = name;

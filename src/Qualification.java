@@ -1,6 +1,8 @@
 
 public class Qualification {
 	String description;
+	Worker[] peopleWithQualification;
+	Project[] projectWithQualification;
 
 	Qualification (String description) {
 		this.description = description;

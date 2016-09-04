@@ -1,6 +1,9 @@
 
 public class Company {
 	String name;
+	Worker[] availableWorkerPool;
+	Worker[] assignedWorkerPool;
+	Project[] workingOn;
 
 	Company (String name) {
 		this.name = name;
