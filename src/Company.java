@@ -1,9 +1,10 @@
+import java.util.ArrayList;
 
 public class Company {
 	String name;
-	Worker[] availableWorkerPool;
-	Worker[] assignedWorkerPool;
-	Project[] workingOn;
+	ArrayList<Worker> availableWorkerPool = new ArrayList<Worker>();
+	ArrayList<Worker> assignedWorkerPool = new ArrayList<Worker>();
+	ArrayList<Project> workingOn = new ArrayList<Project>();
 
 	Company (String name) {
 		this.name = name;

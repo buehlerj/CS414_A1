@@ -1,11 +1,12 @@
+import java.util.ArrayList;
 
 public class Project {
 	String name;
 	ProjectSize size;
 	ProjectStatus status;
 	Company company;
-	Worker[] workers;
-	Qualification[] requires;
+	ArrayList<Worker> workers = new ArrayList<Worker>();
+	ArrayList<Qualification> requires = new ArrayList<Qualification>();
 
 	Project (String name, ProjectSize size, ProjectStatus status) {
 		this.name = name;

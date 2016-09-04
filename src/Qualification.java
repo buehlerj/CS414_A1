@@ -1,8 +1,9 @@
+import java.util.ArrayList;
 
 public class Qualification {
 	String description;
-	Worker[] peopleWithQualification;
-	Project[] projectWithQualification;
+	ArrayList<Worker> peopleWithQualification = new ArrayList<Worker>();
+	ArrayList<Project> projectWithQualification = new ArrayList<Project>();
 
 	Qualification (String description) {
 		this.description = description;
