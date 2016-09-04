@@ -1,10 +1,11 @@
+import java.util.ArrayList;
 
 public class Worker {
 	String name;
 	Company companyAvailableTo;
 	Company companyAssignedTo;
-	Project[] projectAssignedTo;
-	Qualification[] isQualifiedFor;
+	ArrayList<Project> projectAssignedTo = new ArrayList<Project>();
+	ArrayList<Qualification> isQualifiedFor = new ArrayList<Qualification>();
 
 	Worker (String name, Qualification[] qs) {
 		this.name = name;
