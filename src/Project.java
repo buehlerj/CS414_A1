@@ -3,6 +3,9 @@ public class Project {
 	String name;
 	ProjectSize size;
 	ProjectStatus status;
+	Company company;
+	Worker[] workers;
+	Qualification[] requires;
 
 	Project (String name, ProjectSize size, ProjectStatus status) {
 		this.name = name;
