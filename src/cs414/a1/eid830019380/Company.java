@@ -43,23 +43,28 @@ public class Company {
 		availableWorkerPool.add(w);
 	}
 
-	public void assign (Worker w, Project p) {
+	public int assign (Worker w, Project p) {
 		if (!availableWorkerPool.contains(w)) {
 			System.out.println("Worker not available");
+			return -1;
 		}
 		else if (p.getStatus() != ProjectStatus.ACTIVE || p.getStatus() != ProjectStatus.FINISHED) {
 			System.out.println("This project is already " + p.getStatus());
+			return -2;
 		}
 		else if (w.willOverload(p)) {
 			System.out.println("This project will overload this poor worker.");
+			return -3;
 		}
 		else if (p.isHelpful(w)) {
 			if (!assignedWorkerPool.contains(w))
 				assignedWorkerPool.add(w);
 			p.workers.add(w);
+			return 1;
 		}
 		else {
 			System.out.println("Well, I don't know what to do for you. Sorry!");
+			return -4;
 		}
 	}
 
