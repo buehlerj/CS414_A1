@@ -1,3 +1,4 @@
+package cs414.a1.eid830019380;
 import java.util.ArrayList;
 
 public class Worker {
@@ -8,7 +9,7 @@ public class Worker {
 	ArrayList<Project> projectsAssignedTo = new ArrayList<Project>();
 	ArrayList<Qualification> isQualifiedFor = new ArrayList<Qualification>();
 
-	Worker (String name, Qualification[] qs) {
+	public Worker (String name, ArrayList<Qualification> qs) {
 		this.name = name;
 	}
 
