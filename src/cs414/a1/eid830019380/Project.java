@@ -1,3 +1,4 @@
+package cs414.a1.eid830019380;
 import java.util.ArrayList;
 
 public class Project {
@@ -8,7 +9,7 @@ public class Project {
 	ArrayList<Worker> workers = new ArrayList<Worker>();
 	ArrayList<Qualification> requires = new ArrayList<Qualification>();
 
-	Project (String name, ProjectSize size, ProjectStatus status) {
+	public Project (String name, ProjectSize size, ProjectStatus status) {
 		this.name = name;
 		this.size = size;
 		this.status = status;

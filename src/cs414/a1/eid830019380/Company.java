@@ -1,3 +1,4 @@
+package cs414.a1.eid830019380;
 import java.util.ArrayList;
 
 public class Company {
@@ -6,15 +7,15 @@ public class Company {
 	ArrayList<Worker> assignedWorkerPool = new ArrayList<Worker>();
 	ArrayList<Project> workingOn = new ArrayList<Project>();
 
-	Company (String name) {
+	public Company (String name) {
 		this.name = name;
 	}
 
-	public String getName () {
+	public String getName () { //
 		return name;
 	}
 
-	public ArrayList<Worker> getAvailableWorkers () {
+	public ArrayList<Worker> getAvailableWorkers () { //
 		return availableWorkerPool;
 	}
 
@@ -30,7 +31,7 @@ public class Company {
 
 	public boolean equals () {
 		System.out.println("UNIMPLEMENTED");
-		return false;
+		return true;
 	}
 
 	@Override
