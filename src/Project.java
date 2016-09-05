@@ -35,6 +35,7 @@ public class Project {
 		return false;
 	}
 
+	@Override
 	public String toString () {
 		return name + ":" + workers.size() + ":" + status;
 	}
@@ -49,8 +50,12 @@ public class Project {
 		return requirements;
 	}
 
-	public static boolean isHelpful (Worker w) {
-		System.out.println("UNIMPLEMENTED");
-		return true;
+	public boolean isHelpful (Worker w) {
+		ArrayList<Qualification> qualities_needed_for_proeject = missingQualifications();
+		for (int i = 0; i < qualities_needed_for_proeject.size(); i++) {
+			if (w.isQualifiedFor.contains(qualities_needed_for_proeject.get(i)))
+				return true;
+		}
+		return false;
 	}
 }

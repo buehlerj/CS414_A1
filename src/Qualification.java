@@ -14,6 +14,7 @@ public class Qualification {
 		return true;
 	}
 
+	@Override
 	public String toString () {
 		return description;
 	}

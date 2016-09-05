@@ -37,16 +37,30 @@ public class Worker {
 		return false;
 	}
 
+	@Override
 	public String toString () {
 		return name + ":" + projectsAssignedTo.size() + ":" + isQualifiedFor.size() + ":" + salary;
 	}
 
 	public boolean willOverload (Project p) {
-		ArrayList<Project> projects = this.projectsAssignedTo;
-		// TODO: How many big, medium, and small projects is the worker assigned to?
 		int number_of_big_projects = 0;
 		int number_of_medium_projects = 0;
 		int number_of_small_projects = 0;
+		ArrayList<Project> projects = this.projectsAssignedTo;
+		projects.add(p);
+		for (int i = 0; i < projects.size(); i++) {
+			switch(projects.get(i).getSize()) {
+			case BIG:
+				number_of_big_projects += 1;
+				break;
+			case MEDIUM:
+				number_of_medium_projects += 1;
+				break;
+			case SMALL:
+				number_of_small_projects += 1;
+				break;
+			}
+		}
 		if ((3 * number_of_big_projects + 2 * number_of_medium_projects + number_of_small_projects) > 12)
 			return true;
 		return false;
