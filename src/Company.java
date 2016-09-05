@@ -14,14 +14,12 @@ public class Company {
 		return name;
 	}
 
-	public Worker[] getAvailableWorkers () {
-		System.out.println("UNIMPLEMENTED");
-		return null;
+	public ArrayList<Worker> getAvailableWorkers () {
+		return availableWorkerPool;
 	}
 
-	public Worker[] getAssignedWorkers () {
-		System.out.println("UNIMPLEMENTED");
-		return null;
+	public ArrayList<Worker> getAssignedWorkers () {
+		return assignedWorkerPool;
 	}
 
 	public Worker[] getUnassignedWorkers () {
@@ -36,11 +34,11 @@ public class Company {
 
 	@Override
 	public String toString () {
-		return "UNIMPLEMENTED";
+		return name + ":" + getAvailableWorkers().size() + ":" + workingOn.size();
 	}
 
 	public void addToAvailableWorkerPool (Worker w) {
-		System.out.println("UNIMPLEMENTED");
+		availableWorkerPool.add(w);
 	}
 
 	public void assign (Worker w, Project p) {
@@ -48,11 +46,25 @@ public class Company {
 	}
 
 	public void unassign (Worker w, Project p) {
-		System.out.println("UNIMPLEMENTED");
+		if (!p.workers.contains(w))
+			System.out.println("Worker not assigned to this project and will not be removed.");
+		else {
+			p.workers.remove(w);
+			if (w.projectsAssignedTo.isEmpty()) {
+				assignedWorkerPool.remove(w);
+			}
+			// TODO: If the qualification requirements of an ACTIVE project are no longer met, that project is marked SUSPENDED. A PLANNED OR SUSPENDED project remains in that state.
+		}
 	}
 
-	public void unnasign (Worker w) {
-		System.out.println("UNIMPLEMENTED");
+	public void unnasignAll (Worker w) {
+		for (int i = 0; i < w.projectsAssignedTo.size(); i++) {
+			Project project = w.projectsAssignedTo.get(i);
+			// TODO: Change the state of the affected projects as needed
+		}
+		w.projectsAssignedTo.clear();
+		assignedWorkerPool.remove(w);
+		availableWorkerPool.add(w);
 	}
 
 	public void start (Project p) {

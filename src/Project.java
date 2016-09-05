@@ -36,12 +36,17 @@ public class Project {
 	}
 
 	public String toString () {
-		return "UNIMPLEMENTED";
+		return name + ":" + workers.size() + ":" + status;
 	}
 
-	public static Qualification[] missingQualifications () {
-		System.out.println("UNIMPLEMENTED");
-		return null;
+	public ArrayList<Qualification> missingQualifications () {
+		ArrayList<Qualification> requirements = new ArrayList<Qualification> (this.requires);
+		ArrayList<Qualification> workers_qualifications = new ArrayList<Qualification> ();
+		for (int i = 0; i < this.workers.size(); i++) {
+			workers_qualifications.addAll(this.workers.get(i).getQualifications());
+		}
+		requirements.removeAll(workers_qualifications);
+		return requirements;
 	}
 
 	public static boolean isHelpful (Worker w) {

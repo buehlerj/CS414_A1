@@ -15,6 +15,6 @@ public class Qualification {
 	}
 
 	public String toString () {
-		return "UNIMPLEMENTED";
+		return description;
 	}
 }
