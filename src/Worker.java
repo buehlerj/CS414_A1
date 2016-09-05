@@ -2,9 +2,10 @@ import java.util.ArrayList;
 
 public class Worker {
 	String name;
+	Double salary;
 	Company companyAvailableTo;
 	Company companyAssignedTo;
-	ArrayList<Project> projectAssignedTo = new ArrayList<Project>();
+	ArrayList<Project> projectsAssignedTo = new ArrayList<Project>();
 	ArrayList<Qualification> isQualifiedFor = new ArrayList<Qualification>();
 
 	Worker (String name, Qualification[] qs) {
@@ -15,35 +16,39 @@ public class Worker {
 		return name;
 	}
 
-	public static Double getSalary () {
-		System.out.println("UNIMPLEMENTED");
-		return null;
+	public Double getSalary () {
+		return salary;
 	}
 
-	public static void setSalary (Double salary) {
-		System.out.println("UNIMPLEMENTED");
+	public void setSalary (Double salary) {
+		this.salary = salary;
 	}
 
-	public static Qualification[] getQualifications () {
-		System.out.println("UNIMPLEMENTED");
-		return null;
+	public ArrayList<Qualification> getQualifications () {
+		return isQualifiedFor;
 	}
 
-	public static void addQualification (Qualification q) {
-		System.out.println("UNIMPLEMENTED");
+	public void addQualification (Qualification q) {
+		isQualifiedFor.add(q);
 	}
 
-	public static boolean equals () {
+	public boolean equals () {
 		System.out.println("UNIMPLEMENTED");
 		return false;
 	}
 
 	public String toString () {
-		return "UNIMPLEMENTED";
+		return name + ":" + projectsAssignedTo.size() + ":" + isQualifiedFor.size() + ":" + salary;
 	}
 
-	public static boolean willOverload (Project p) {
-		System.out.println("UNIMPLEMENTED");
+	public boolean willOverload (Project p) {
+		ArrayList<Project> projects = this.projectsAssignedTo;
+		// TODO: How many big, medium, and small projects is the worker assigned to?
+		int number_of_big_projects = 0;
+		int number_of_medium_projects = 0;
+		int number_of_small_projects = 0;
+		if ((3 * number_of_big_projects + 2 * number_of_medium_projects + number_of_small_projects) > 12)
+			return true;
 		return false;
 	}
 
