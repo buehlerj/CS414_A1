@@ -8,12 +8,7 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import cs414.a1.eid830019380.Company;
-import cs414.a1.eid830019380.Project;
-import cs414.a1.eid830019380.ProjectSize;
-import cs414.a1.eid830019380.ProjectStatus;
-import cs414.a1.eid830019380.Qualification;
-import cs414.a1.eid830019380.Worker;
+import cs414.a1.buehlerj.*;
 
 public class ProjectTest {
 

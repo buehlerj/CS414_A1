@@ -1,4 +1,4 @@
-package cs414.a1.eid830019380;
+package cs414.a1.buehlerj;
 import java.util.ArrayList;
 
 public class Company {

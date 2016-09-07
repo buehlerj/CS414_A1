@@ -8,7 +8,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import cs414.a1.eid830019380.*;
+import cs414.a1.buehlerj.*;
 
 public class CompanyTest {
 	@Before
