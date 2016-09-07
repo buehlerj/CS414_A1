@@ -6,7 +6,7 @@ public class Qualification {
 	ArrayList<Worker> peopleWithQualification = new ArrayList<Worker>();
 	ArrayList<Project> projectWithQualification = new ArrayList<Project>();
 
-	Qualification (String description) {
+	public Qualification (String description) {
 		this.description = description;
 	}
 

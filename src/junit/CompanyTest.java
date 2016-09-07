@@ -22,6 +22,7 @@ public class CompanyTest {
 	@Test
 	public void testCompanyConstructor() {
 		Company test_company = new Company("Test Company");
+		assertEquals(test_company.getClass(), Company.class);
 	}
 
 	@Test

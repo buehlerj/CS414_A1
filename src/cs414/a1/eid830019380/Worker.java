@@ -11,6 +11,7 @@ public class Worker {
 
 	public Worker (String name, ArrayList<Qualification> qs) {
 		this.name = name;
+		isQualifiedFor = qs;
 	}
 
 	public String getName () {

@@ -128,11 +128,12 @@ public class Company {
 		}
 	}
 
-	public void createProject (String n, ArrayList<Qualification> qs, ProjectSize size) {
+	public Project createProject (String n, ArrayList<Qualification> qs, ProjectSize size) {
 		Project created_project = new Project(n, size, ProjectStatus.PLANNED);
 		for (int i = 0; i < qs.size(); i++) {
 			created_project.requires.add(qs.get(i));
 		}
 		workingOn.add(created_project);
+		return created_project;
 	}
 }
