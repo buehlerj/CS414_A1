@@ -60,17 +60,38 @@ public class CompanyTest {
 		Company test_company = new Company("Test Company");
 		Worker test_worker = new Worker("Test Worker", null);
 		Project test_project = new Project("Test Poject", ProjectSize.SMALL, ProjectStatus.PLANNED);
-		test_company.assign(test_worker, test_project);
+		int result = test_company.assign(test_worker, test_project);
 		assertTrue(test_company.getAvailableWorkers().isEmpty());
+		assertEquals(result, -1);
 	}
 
 	@Test
 	public void testAssignStatusIsActive() {
 		Company test_company = new Company("Test Company");
 		Worker test_worker = new Worker("Test Worker", null);
-		Project test_project = new Project("Test Poject", ProjectSize.SMALL, ProjectStatus.ACTIVE);
+		Project test_project = new Project("Test Poject", ProjectSize.SMALL, ProjectStatus.PLANNED);
 		test_company.addToAvailableWorkerPool(test_worker);
-		test_company.assign(test_worker, test_project);
+		int result = test_company.assign(test_worker, test_project);
 		assertEquals(test_company.getAvailableWorkers().size(), 1);
+		assertEquals(result, -2);
+	}
+
+	@Test
+	public void testUnassignNotAssigned() {
+		Company test_company = new Company("Test Company");
+		Worker test_worker = new Worker("Test Worker", null);
+		Project test_project = new Project("Test Poject", ProjectSize.SMALL, ProjectStatus.PLANNED);
+		int result = test_company.unassign(test_worker, test_project);
+		assertEquals(result, -1);
+	}
+
+	@Test
+	public void testUnassignCorrectly() {
+		Company test_company = new Company("Test Company");
+		Worker test_worker = new Worker("Test Worker", null);
+		Project test_project = new Project("Test Poject", ProjectSize.SMALL, ProjectStatus.PLANNED);
+		test_company.assign(test_worker, test_project);
+		int result = test_company.unassign(test_worker, test_project);
+		assertEquals(result, -1);
 	}
 }
