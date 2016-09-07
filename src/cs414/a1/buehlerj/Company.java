@@ -48,9 +48,11 @@ public class Company {
 			System.out.println("Worker not available");
 			return -1;
 		}
-		else if (p.getStatus() != ProjectStatus.ACTIVE || p.getStatus() != ProjectStatus.FINISHED) {
-			System.out.println("This project is already " + p.getStatus());
-			return -2;
+		else if (p.getStatus() != ProjectStatus.ACTIVE) {
+			if (p.getStatus() != ProjectStatus.FINISHED) {
+				System.out.println("This project is already " + p.getStatus());
+				return -2;
+			}
 		}
 		else if (w.willOverload(p)) {
 			System.out.println("This project will overload this poor worker.");
@@ -60,17 +62,19 @@ public class Company {
 			if (!assignedWorkerPool.contains(w))
 				assignedWorkerPool.add(w);
 			p.workers.add(w);
-			return 1;
+			return 0;
 		}
 		else {
-			System.out.println("Well, I don't know what to do for you. Sorry!");
+			System.out.println("Worker is not helpful.");
 			return -4;
 		}
 	}
 
-	public void unassign (Worker w, Project p) {
-		if (!p.workers.contains(w))
+	public int unassign (Worker w, Project p) {
+		if (!p.workers.contains(w)) {
 			System.out.println("This Worker is not assigned to this project and will not be removed.");
+			return -1;
+		}
 		else {
 			p.workers.remove(w);
 			if (w.projectsAssignedTo.isEmpty()) {
@@ -78,6 +82,7 @@ public class Company {
 			}
 			if (p.getStatus() == ProjectStatus.ACTIVE && !p.missingQualifications().isEmpty()) {
 				p.setStatus(ProjectStatus.SUSPENDED);
+				return 0
 			}
 		}
 	}
