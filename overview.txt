@@ -1,0 +1,11 @@
+This is my Assignment 1 project. I wrote it using Java and used my public GitHub to handle version control.
+Company.java: This object handles all of the other objects. It can create Projects, assign Workers, determine Qualifications on Projects, etc. This was probably the most difficult object to work on because of its associations with so many other objects.
+Project: This is what the workers can work on. It can be in many different states, as well as be different sizes.
+Qualification: Projects have qualifications, and workers can meet those qualifications.
+Worker: These are the people who are assigned to Companies that can work on projects.
+
+JUnit: Coming up with Tests for the Test Driven development was a little difficult because the requirements were all in words rather than in code. I found myself adjusting (the code of) my test as I worked on the classes to account for what the possible outputs would look like.
+
+Running the TestAll.java file will go through all of my tests. Otherwise, you can run each object type's tests individually.
+
+Associations were accounted for outside of the requirements, and the associations were interactive and reacted to other objects being messed with.
