@@ -1,4 +1,4 @@
-package cs414.a1.eid830019380;
+package cs414.a1.buehlerj;
 import java.util.ArrayList;
 
 public class Company {
@@ -43,29 +43,39 @@ public class Company {
 		availableWorkerPool.add(w);
 	}
 
-	public void assign (Worker w, Project p) {
+	public int assign (Worker w, Project p) {
+		if (p.getStatus() == ProjectStatus.ACTIVE) {
+			System.out.println("This project is already " + p.getStatus());
+			return -1;
+		}
+		if (p.getStatus() == ProjectStatus.FINISHED) {
+			System.out.println("This project is already " + p.getStatus());
+			return -2;
+		}
 		if (!availableWorkerPool.contains(w)) {
 			System.out.println("Worker not available");
+			return -3;
 		}
-		else if (p.getStatus() != ProjectStatus.ACTIVE || p.getStatus() != ProjectStatus.FINISHED) {
-			System.out.println("This project is already " + p.getStatus());
-		}
-		else if (w.willOverload(p)) {
+		if (w.willOverload(p)) {
 			System.out.println("This project will overload this poor worker.");
+			return -4;
 		}
-		else if (p.isHelpful(w)) {
+		if (p.isHelpful(w)) {
 			if (!assignedWorkerPool.contains(w))
 				assignedWorkerPool.add(w);
 			p.workers.add(w);
+			w.projectsAssignedTo.add(p);
+			return 0;
 		}
-		else {
-			System.out.println("Well, I don't know what to do for you. Sorry!");
-		}
+		System.out.println("Worker is not helpful.");
+		return -5;
 	}
 
-	public void unassign (Worker w, Project p) {
-		if (!p.workers.contains(w))
+	public int unassign (Worker w, Project p) {
+		if (!p.workers.contains(w)) {
 			System.out.println("This Worker is not assigned to this project and will not be removed.");
+			return -1;
+		}
 		else {
 			p.workers.remove(w);
 			if (w.projectsAssignedTo.isEmpty()) {
@@ -74,6 +84,7 @@ public class Company {
 			if (p.getStatus() == ProjectStatus.ACTIVE && !p.missingQualifications().isEmpty()) {
 				p.setStatus(ProjectStatus.SUSPENDED);
 			}
+			return 0;
 		}
 	}
 
@@ -123,11 +134,12 @@ public class Company {
 		}
 	}
 
-	public void createProject (String n, ArrayList<Qualification> qs, ProjectSize size) {
+	public Project createProject (String n, ArrayList<Qualification> qs, ProjectSize size) {
 		Project created_project = new Project(n, size, ProjectStatus.PLANNED);
 		for (int i = 0; i < qs.size(); i++) {
 			created_project.requires.add(qs.get(i));
 		}
 		workingOn.add(created_project);
+		return created_project;
 	}
 }

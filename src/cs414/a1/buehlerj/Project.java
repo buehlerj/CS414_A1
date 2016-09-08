@@ -1,4 +1,4 @@
-package cs414.a1.eid830019380;
+package cs414.a1.buehlerj;
 import java.util.ArrayList;
 
 public class Project {
@@ -52,10 +52,13 @@ public class Project {
 	}
 
 	public boolean isHelpful (Worker w) {
-		ArrayList<Qualification> qualities_needed_for_proeject = missingQualifications();
-		for (int i = 0; i < qualities_needed_for_proeject.size(); i++) {
-			if (w.isQualifiedFor.contains(qualities_needed_for_proeject.get(i)))
+		if (w.isQualifiedFor == null)
+			return false;
+		ArrayList<Qualification> qualities_needed_for_project = missingQualifications();
+		for (int i = 0; i < qualities_needed_for_project.size(); i++) {
+			if (w.isQualifiedFor.contains(qualities_needed_for_project.get(i))) {
 				return true;
+			}
 		}
 		return false;
 	}

@@ -1,9 +1,9 @@
-package cs414.a1.eid830019380;
+package cs414.a1.buehlerj;
 import java.util.ArrayList;
 
 public class Worker {
 	String name;
-	Double salary;
+	Double salary = 0.0;
 	Company companyAvailableTo;
 	Company companyAssignedTo;
 	ArrayList<Project> projectsAssignedTo = new ArrayList<Project>();
@@ -11,6 +11,8 @@ public class Worker {
 
 	public Worker (String name, ArrayList<Qualification> qs) {
 		this.name = name;
+		if (qs != null)
+			isQualifiedFor = qs;
 	}
 
 	public String getName () {
@@ -22,7 +24,10 @@ public class Worker {
 	}
 
 	public void setSalary (Double salary) {
-		this.salary = salary;
+		if (salary < 0.0)
+			System.out.println("Cannot have a negative salary.");
+		else
+			this.salary = salary;
 	}
 
 	public ArrayList<Qualification> getQualifications () {
@@ -30,7 +35,10 @@ public class Worker {
 	}
 
 	public void addQualification (Qualification q) {
-		isQualifiedFor.add(q);
+		if (isQualifiedFor.contains(q))
+			System.out.println("Worker already has this qualification");
+		else
+			isQualifiedFor.add(q);
 	}
 
 	public boolean equals () {
@@ -48,7 +56,9 @@ public class Worker {
 		int number_of_medium_projects = 0;
 		int number_of_small_projects = 0;
 		ArrayList<Project> projects = this.projectsAssignedTo;
-		projects.add(p);
+		if (projects.isEmpty()) {
+			return false;
+		}
 		for (int i = 0; i < projects.size(); i++) {
 			switch(projects.get(i).getSize()) {
 			case BIG:
@@ -62,8 +72,21 @@ public class Worker {
 				break;
 			}
 		}
-		if ((3 * number_of_big_projects + 2 * number_of_medium_projects + number_of_small_projects) > 12)
+		int new_project_size = 0;
+		switch(p.getSize()){
+		case BIG:
+			new_project_size = 3;
+			break;
+		case MEDIUM:
+			new_project_size = 2;
+			break;
+		case SMALL:
+			new_project_size = 1;
+			break;
+		}
+		if ((3 * number_of_big_projects + 2 * number_of_medium_projects + number_of_small_projects + new_project_size) > 12) {
 			return true;
+		}
 		return false;
 	}
 
