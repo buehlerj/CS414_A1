@@ -1,24 +1,16 @@
 package junit;
 
-import static org.junit.Assert.*;
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import cs414.a1.buehlerj.*;;
 
-public class TestAll {
+@RunWith(Suite.class)
+@Suite.SuiteClasses({
+	CompanyTest.class,
+	ProjectTest.class,
+	QualificationTest.class,
+	WorkerTest.class,
+})
 
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
-	}
-
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-	}
-
-	@Test
-	public void test() {
-		fail("Not yet implemented");
-	}
-
-}
+public class TestAll {}
