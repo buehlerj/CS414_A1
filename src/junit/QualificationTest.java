@@ -25,9 +25,9 @@ public class QualificationTest {
 	}
 
 	@Test
-	public void testGetName() {
+	public void testToString() {
 		Qualification test_qualification = new Qualification("Test Qualification");
-		assertEquals(test_qualification, Qualification.class);
+		assertEquals(test_qualification.toString(), "Test Qualification");
 	}
 
 }

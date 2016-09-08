@@ -64,6 +64,7 @@ public class Company {
 			if (!assignedWorkerPool.contains(w))
 				assignedWorkerPool.add(w);
 			p.workers.add(w);
+			w.projectsAssignedTo.add(p);
 			return 0;
 		}
 		System.out.println("Worker is not helpful.");
