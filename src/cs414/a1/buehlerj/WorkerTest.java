@@ -1,14 +1,14 @@
-package junit;
+package cs414.a1.buehlerj;
 
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import cs414.a1.buehlerj.*;
 
 public class WorkerTest {
 
@@ -55,7 +55,7 @@ public class WorkerTest {
 	@Test
 	public void testGetQualifications() {
 		Qualification q1 = new Qualification("Qualification1");
-		ArrayList<Qualification> qualifications = new ArrayList<Qualification>();
+		Set<Qualification> qualifications = new HashSet<Qualification>();
 		qualifications.add(q1);
 		Worker test_worker = new Worker("Test Worker", qualifications);
 		assertEquals(test_worker.getQualifications(), qualifications);
@@ -64,7 +64,7 @@ public class WorkerTest {
 	@Test
 	public void testAddQualifications() {
 		Qualification q1 = new Qualification("Qualification1");
-		ArrayList<Qualification> qualifications = new ArrayList<Qualification>();
+		Set<Qualification> qualifications = new HashSet<Qualification>();
 		qualifications.add(q1);
 		Worker test_worker = new Worker("Test Worker", null);
 		test_worker.addQualification(q1);
@@ -74,7 +74,7 @@ public class WorkerTest {
 	@Test
 	public void testAddExistingQualification() {
 		Qualification q1 = new Qualification("Qualification1");
-		ArrayList<Qualification> qualifications = new ArrayList<Qualification>();
+		Set<Qualification> qualifications = new HashSet<Qualification>();
 		qualifications.add(q1);
 		Worker test_worker = new Worker("Test Worker", null);
 		test_worker.addQualification(q1);
@@ -91,7 +91,7 @@ public class WorkerTest {
 	@Test
 	public void testToStringFull() {
 		Qualification q1 = new Qualification("Qualification1");
-		ArrayList<Qualification> qualifications = new ArrayList<Qualification>();
+		Set<Qualification> qualifications = new HashSet<Qualification>();
 		qualifications.add(q1);
 		Worker test_worker = new Worker("Test Worker", qualifications);
 		test_worker.setSalary(12.83);
@@ -102,7 +102,7 @@ public class WorkerTest {
 	public void testWillOverload() {
 		Company test_company = new Company("Test Company");
 		Qualification q1 = new Qualification("Qualification1");
-		ArrayList<Qualification> qualifications = new ArrayList<Qualification>();
+		Set<Qualification> qualifications = new HashSet<Qualification>();
 		qualifications.add(q1);
 		Project p1 = test_company.createProject("Test Project 1", qualifications, ProjectSize.BIG);
 		Project p2 = test_company.createProject("Test Project 2", qualifications, ProjectSize.BIG);

@@ -1,14 +1,13 @@
-package junit;
+package cs414.a1.buehlerj;
 
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import cs414.a1.buehlerj.*;
 
 public class CompanyTest {
 	@Before
@@ -36,7 +35,7 @@ public class CompanyTest {
 		Company test_company = new Company("Test Company");
 		Worker test_worker = new Worker("Test Worker", null);
 		test_company.addToAvailableWorkerPool(test_worker);
-		ArrayList<Worker> expected_workers = new ArrayList<Worker>();
+		Set<Worker> expected_workers = new HashSet<Worker>();
 		expected_workers.add(test_worker);
 		assertEquals(test_company.getAvailableWorkers(), expected_workers);
 	}
@@ -44,14 +43,14 @@ public class CompanyTest {
 	@Test
 	public void testAvailableWorkersEmpty() {
 		Company test_company = new Company("Test Company");
-		ArrayList<Worker> expected_workers = new ArrayList<Worker>();
+		Set<Worker> expected_workers = new HashSet<Worker>();
 		assertEquals(test_company.getAvailableWorkers(), expected_workers);
 	}
 
 	@Test
 	public void testAssignedWorkersEmpty() {
 		Company test_company = new Company("Test Company");
-		ArrayList<Worker> expected_workers = new ArrayList<Worker>();
+		Set<Worker> expected_workers = new HashSet<Worker>();
 		assertEquals(test_company.getAssignedWorkers(), expected_workers);
 	}
 

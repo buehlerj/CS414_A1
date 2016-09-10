@@ -1,10 +1,12 @@
 package cs414.a1.buehlerj;
-import java.util.ArrayList;
+
+import java.util.HashSet;
+import java.util.Set;
 
 public class Qualification {
 	String description;
-	ArrayList<Worker> peopleWithQualification = new ArrayList<Worker>();
-	ArrayList<Project> projectWithQualification = new ArrayList<Project>();
+	Set<Worker> peopleWithQualification = new HashSet<Worker>();
+	Set<Project> projectWithQualification = new HashSet<Project>();
 
 	public Qualification (String description) {
 		this.description = description;

@@ -1,11 +1,13 @@
 package cs414.a1.buehlerj;
-import java.util.ArrayList;
+
+import java.util.HashSet;
+import java.util.Set;
 
 public class Company {
 	String name;
-	ArrayList<Worker> availableWorkerPool = new ArrayList<Worker>();
-	ArrayList<Worker> assignedWorkerPool = new ArrayList<Worker>();
-	ArrayList<Project> workingOn = new ArrayList<Project>();
+	Set<Worker> availableWorkerPool = new HashSet<Worker>();
+	Set<Worker> assignedWorkerPool = new HashSet<Worker>();
+	Set<Project> workingOn = new HashSet<Project>();
 
 	public Company (String name) {
 		this.name = name;
@@ -15,16 +17,16 @@ public class Company {
 		return name;
 	}
 
-	public ArrayList<Worker> getAvailableWorkers () { //
+	public Set<Worker> getAvailableWorkers () { //
 		return availableWorkerPool;
 	}
 
-	public ArrayList<Worker> getAssignedWorkers () {
+	public Set<Worker> getAssignedWorkers () {
 		return assignedWorkerPool;
 	}
 
-	public ArrayList<Worker> getUnassignedWorkers () {
-		ArrayList<Worker> unassigned_workers = new ArrayList<Worker> (availableWorkerPool);
+	public Set<Worker> getUnassignedWorkers () {
+		Set<Worker> unassigned_workers = new HashSet<Worker> (availableWorkerPool);
 		unassigned_workers.removeAll(assignedWorkerPool);
 		return unassigned_workers;
 	}
@@ -89,12 +91,12 @@ public class Company {
 	}
 
 	public void unassignAll (Worker w) {
-		ArrayList<Project> former_projects = new ArrayList<Project> (w.projectsAssignedTo);
+		Set<Project> former_projects = new HashSet<Project> (w.projectsAssignedTo);
 		w.projectsAssignedTo.clear();
 		assignedWorkerPool.remove(w);
-		for (int i = 0; i < former_projects.size(); i++) {
-			if (former_projects.get(i).getStatus() == ProjectStatus.ACTIVE && !former_projects.get(i).missingQualifications().isEmpty()) {
-				former_projects.get(i).setStatus(ProjectStatus.SUSPENDED);
+		for (Project project : former_projects) {
+			if (project.getStatus() == ProjectStatus.ACTIVE && !project.missingQualifications().isEmpty()) {
+				project.setStatus(ProjectStatus.SUSPENDED);
 			}
 		}
 	}
@@ -118,9 +120,9 @@ public class Company {
 		switch (p.getStatus()) {
 		case ACTIVE:
 			p.setStatus(ProjectStatus.FINISHED);
-			for (int i = 0; i < p.workers.size(); i++) {
-				if (p.workers.get(i).projectsAssignedTo.size() <= 1) {
-					assignedWorkerPool.remove(p.workers.get(i));
+			for (Worker worker : p.workers) {
+				if (worker.projectsAssignedTo.size() <= 1) {
+					assignedWorkerPool.remove(worker);
 				}
 			}
 			p.workers.clear();
@@ -134,10 +136,10 @@ public class Company {
 		}
 	}
 
-	public Project createProject (String n, ArrayList<Qualification> qs, ProjectSize size) {
+	public Project createProject (String n, Set<Qualification> qs, ProjectSize size) {
 		Project created_project = new Project(n, size, ProjectStatus.PLANNED);
-		for (int i = 0; i < qs.size(); i++) {
-			created_project.requires.add(qs.get(i));
+		for (Qualification qualification : qs) {
+			created_project.requires.add(qualification);
 		}
 		workingOn.add(created_project);
 		return created_project;

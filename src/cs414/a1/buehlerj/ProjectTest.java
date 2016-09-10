@@ -1,14 +1,13 @@
-package junit;
+package cs414.a1.buehlerj;
 
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
-import cs414.a1.buehlerj.*;
 
 public class ProjectTest {
 
@@ -68,7 +67,7 @@ public class ProjectTest {
 	@Test
 	public void testWorkerIsHelpfulForProject() {
 		Qualification q1 = new Qualification("Qualification 1");
-		ArrayList<Qualification> worker_qualifications = new ArrayList<Qualification>();
+		Set<Qualification> worker_qualifications = new HashSet<Qualification>();
 		worker_qualifications.add(q1);
 		Worker test_worker = new Worker("Test Worker", worker_qualifications);
 		Company test_company = new Company("Test Company");
@@ -80,7 +79,7 @@ public class ProjectTest {
 	public void testWorkerIsNotHelpfulForProjectEmpty() {
 		Worker test_worker = new Worker("Test Worker", null);
 		Qualification q1 = new Qualification("Qualification 1");
-		ArrayList<Qualification> qualifications = new ArrayList<Qualification>();
+		Set<Qualification> qualifications = new HashSet<Qualification>();
 		qualifications.add(q1);
 		Company test_comp = new Company("Test Company");
 		Project test_project = test_comp.createProject("", qualifications, ProjectSize.SMALL);
@@ -91,10 +90,10 @@ public class ProjectTest {
 	public void testWorkerIsNotHelpfulForProject() {
 		Qualification q1 = new Qualification("Qualification 1");
 		Qualification q2 = new Qualification("Qualification 2");
-		ArrayList<Qualification> worker_qualifications = new ArrayList<Qualification>();
+		Set<Qualification> worker_qualifications = new HashSet<Qualification>();
 		worker_qualifications.add(q2);
 		Worker test_worker = new Worker("Test Worker", worker_qualifications);
-		ArrayList<Qualification> qualifications = new ArrayList<Qualification>();
+		Set<Qualification> qualifications = new HashSet<Qualification>();
 		qualifications.add(q1);
 		Company test_comp = new Company("Test Company");
 		Project test_project = test_comp.createProject("", qualifications, ProjectSize.SMALL);
