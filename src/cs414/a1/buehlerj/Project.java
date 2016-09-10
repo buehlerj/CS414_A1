@@ -1,13 +1,15 @@
 package cs414.a1.buehlerj;
-import java.util.ArrayList;
+
+import java.util.HashSet;
+import java.util.Set;
 
 public class Project {
 	String name;
 	ProjectSize size;
 	ProjectStatus status;
 	Company company;
-	ArrayList<Worker> workers = new ArrayList<Worker>();
-	ArrayList<Qualification> requires = new ArrayList<Qualification>();
+	Set<Worker> workers = new HashSet<Worker>();
+	Set<Qualification> requires = new HashSet<Qualification>();
 
 	public Project (String name, ProjectSize size, ProjectStatus status) {
 		this.name = name;
@@ -41,11 +43,11 @@ public class Project {
 		return name + ":" + workers.size() + ":" + status;
 	}
 
-	public ArrayList<Qualification> missingQualifications () {
-		ArrayList<Qualification> requirements = new ArrayList<Qualification> (this.requires);
-		ArrayList<Qualification> workers_qualifications = new ArrayList<Qualification> ();
-		for (int i = 0; i < this.workers.size(); i++) {
-			workers_qualifications.addAll(this.workers.get(i).getQualifications());
+	public Set<Qualification> missingQualifications () {
+		Set<Qualification> requirements = new HashSet<Qualification> (this.requires);
+		Set<Qualification> workers_qualifications = new HashSet<Qualification> ();
+		for (Worker worker : this.workers) {
+			workers_qualifications.addAll(worker.getQualifications());
 		}
 		requirements.removeAll(workers_qualifications);
 		return requirements;
@@ -54,9 +56,9 @@ public class Project {
 	public boolean isHelpful (Worker w) {
 		if (w.isQualifiedFor == null)
 			return false;
-		ArrayList<Qualification> qualities_needed_for_project = missingQualifications();
-		for (int i = 0; i < qualities_needed_for_project.size(); i++) {
-			if (w.isQualifiedFor.contains(qualities_needed_for_project.get(i))) {
+		Set<Qualification> qualifications_needed_for_project = missingQualifications();
+		for (Qualification qualification : qualifications_needed_for_project ) {
+			if (w.isQualifiedFor.contains(qualification)) {
 				return true;
 			}
 		}

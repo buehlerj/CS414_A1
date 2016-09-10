@@ -1,9 +1,8 @@
-package junit;
+package cs414.a1.buehlerj;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
-import cs414.a1.buehlerj.*;;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({

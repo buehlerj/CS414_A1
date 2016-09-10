@@ -1,12 +1,10 @@
-package junit;
+package cs414.a1.buehlerj;
 
 import static org.junit.Assert.*;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
-import cs414.a1.buehlerj.*;
 
 public class QualificationTest {
 

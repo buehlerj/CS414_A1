@@ -1,15 +1,16 @@
 package cs414.a1.buehlerj;
-import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Worker {
 	String name;
 	Double salary = 0.0;
 	Company companyAvailableTo;
 	Company companyAssignedTo;
-	ArrayList<Project> projectsAssignedTo = new ArrayList<Project>();
-	ArrayList<Qualification> isQualifiedFor = new ArrayList<Qualification>();
+	Set<Project> projectsAssignedTo = new HashSet<Project>();
+	Set<Qualification> isQualifiedFor = new HashSet<Qualification>();
 
-	public Worker (String name, ArrayList<Qualification> qs) {
+	public Worker (String name, Set<Qualification> qs) {
 		this.name = name;
 		if (qs != null)
 			isQualifiedFor = qs;
@@ -30,7 +31,7 @@ public class Worker {
 			this.salary = salary;
 	}
 
-	public ArrayList<Qualification> getQualifications () {
+	public Set<Qualification> getQualifications () {
 		return isQualifiedFor;
 	}
 
@@ -55,12 +56,12 @@ public class Worker {
 		int number_of_big_projects = 0;
 		int number_of_medium_projects = 0;
 		int number_of_small_projects = 0;
-		ArrayList<Project> projects = this.projectsAssignedTo;
+		Set<Project> projects = this.projectsAssignedTo;
 		if (projects.isEmpty()) {
 			return false;
 		}
-		for (int i = 0; i < projects.size(); i++) {
-			switch(projects.get(i).getSize()) {
+		for (Project project : projects) {
+			switch(project.getSize()) {
 			case BIG:
 				number_of_big_projects += 1;
 				break;
